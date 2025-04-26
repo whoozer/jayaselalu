@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Logout | whzr.xyz</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/logout.css" />
+</head>
+<body>
+
+<div class="logout-container">
+  <h1>Apakah Anda yakin ingin logout?</h1>
+  <div class="button-group">
+    <button class="logout-btn" onclick="confirmLogout()">Logout</button>
+    <button class="cancel-btn" onclick="cancelLogout()">Batal</button>
+  </div>
+</div>
+
+<script>
+  function confirmLogout() {
+    if (confirm('Yakin ingin logout?')) {
+      localStorage.removeItem('isLoggedIn');
+      alert('Anda telah berhasil logout.');
+      window.location.href = 'index.html';
+    }
+  }
+
+  function cancelLogout() {
+    window.location.href = 'index.html'; // Balik ke halaman utama
+  }
+</script>
+
+</body>
+</html>
+
