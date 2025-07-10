@@ -5,8 +5,8 @@ const app = express();
 
 app.use(cors());
 const WOOCOMMERCE_URL = 'https://checkout.whoozer.xyz/wp-json/wc/v3/products';
-const CONSUMER_KEY = 'ck_aea278229c511f3428e5f5606fbe90b5350b17e8'; // Ganti dengan API Key WooCommerce Anda
-const CONSUMER_SECRET = 'cs_b2778f157badbd1322d0f34672c1f90cfca9b7dd'; // Ganti dengan API Secret WooCommerce Anda
+const CONSUMER_KEY = process.env.WOOCOMMERCE_KEY; // Ganti dengan API Key WooCommerce Anda
+const CONSUMER_SECRET = process.env.WOOCOMMERCE_SECRET; // Ganti dengan API Secret WooCommerce Anda
 
 // Endpoint: /api/stock/:productId
 app.get('/api/stock/:productId', async (req, res) => {
@@ -42,7 +42,7 @@ app.get('/api/stock/:productId', async (req, res) => {
   }
 });
 
-// Jalankan server di port 3000
-app.listen(3000, () => {
-  console.log('WooCommerce stock API listening on port 3000');
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log('WooCommerce stock API listening on port', PORT);
 });
